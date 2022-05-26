@@ -1,6 +1,6 @@
 let pronoun = ["the", "our"];
 let adj = ["great", "big"];
-let noun = ["jogger", "racoon"];
+let noun = ["joger", "racoon"];
 
 for (let i = 0; i < pronoun.length; i++) {
   for (let z = 0; z < adj.length; z++)
