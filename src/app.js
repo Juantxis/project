@@ -3,7 +3,7 @@ import "bootstrap";
 import "./style.css";
 window.onload = function() {
   //write your code here
-  let p = document.querySelector("#excuse");
+  let text = document.querySelector("#excuse");
 
   let who = ["The dog", "My grandma", "His turtle", "My bird"];
   let action = ["ate", "peed", "crushed", "broke"];
@@ -21,6 +21,6 @@ window.onload = function() {
   let whatRandomNumber = Math.floor(Math.random() * what.length);
   let whenRandomNumber = Math.floor(Math.random() * when.length);
 
-  p.innerHTML = `${who[whoRandomNumber]} ${action[actionRandomNumber]} ${what[whatRandomNumber]} ${when[whenRandomNumber]}
+  text.innerHTML = `${who[whoRandomNumber]} ${action[actionRandomNumber]} ${what[whatRandomNumber]} ${when[whenRandomNumber]}
   `;
 };
