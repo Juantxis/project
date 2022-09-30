@@ -51,8 +51,10 @@ function crearCarta(event) {
 
   // si los palos son diamantes o corazones cambia el estilo del texto a rojo
   if (
-    palos[eligePalo] === '<img width="30" class="w_img" src="src/assets/img/corazon.png" >' ||
-    palos[eligePalo] === '<img width="30" class="w_img" src="src/assets/img/diamante.png" >'
+    palos[eligePalo] ===
+      '<img width="30" class="w_img" src="src/assets/img/corazon.png" >' ||
+    palos[eligePalo] ===
+      '<img width="30" class="w_img" src="src/assets/img/diamante.png" >'
   ) {
     NUMERO.style.color = "red";
   } else {
@@ -65,21 +67,19 @@ function crearCarta(event) {
   NUMERO.innerHTML = losNumeros[eligeNumero];
   // coger las imagenes con class
   let CLASS_IMGS = document.querySelectorAll(".w_img");
-  CLASS_IMGS.forEach(function(laImagen){
-    laImagen.setAttribute('width', '30px');
-    laImagen.setAttribute('height', '30px');
+  CLASS_IMGS.forEach(function(laImagen) {
+    laImagen.setAttribute("width", "30px");
+    laImagen.setAttribute("height", "30px");
   });
- 
 }
 // cambio de medidas
-function cambiaMedidas(){
-  console.clear();
-  MEDIDAS_CARTA.style.height= CAMBIA_ALTO.value +"px"
-  MEDIDAS_CARTA.style.width= CAMBIA_ANCHO.value +"px"
+function cambiaMedidas() {
+  MEDIDAS_CARTA.style.height = CAMBIA_ALTO.value + "px";
+  MEDIDAS_CARTA.style.width = CAMBIA_ANCHO.value + "px";
   let CLASS_IMGS = document.querySelectorAll(".w_img");
-  CLASS_IMGS.forEach(function(laImagen){
-    laImagen.setAttribute('width', '30px');
-    laImagen.setAttribute('height', '30px');
+  CLASS_IMGS.forEach(function(laImagen) {
+    laImagen.setAttribute("width", "30px");
+    laImagen.setAttribute("height", "30px");
   });
 }
 
@@ -100,7 +100,7 @@ const CUENTA_ATRAS = document.getElementById("cuentaAtras");
 const NUMERO = document.getElementById("numero");
 const PALO_ARRIBA = document.getElementById("paloArriba");
 const PALO_ABAJO = document.getElementById("paloAbajo");
-// eventos para botones 
+// eventos para botones
 BT_CREAR_CARTA.addEventListener("click", crearCarta, false);
 BT_PARA_INTERVALO.addEventListener("click", paraIntervalo, false);
 BT_MEDIDAS.addEventListener("click", cambiaMedidas, false);
