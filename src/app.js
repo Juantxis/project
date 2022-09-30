@@ -32,29 +32,47 @@ let paraIntervalo = function() {
     iniciaIntervalo();
   }
 };
+//funcion comprueba medida
+function comprobar_medida(clase) {
+  const comprueba_medida = document.querySelectorAll(clase);
+  comprueba_medida.forEach(function(el_width) {
+    var hay_width = el_width.getAttribute("width");
+    var hay_height = el_width.getAttribute("height");
+    aConsola(hay_width);
+  });
+  if (hay_width) {
+    return '<img width="30" height="30"';
+  } else {
+    return '<img width="' + hay_width + '" height="' + hay_height + '"';
+  }
+}
 // funcion para crear la carta
 function crearCarta(event) {
-  //console.clear();
-
   //Genera el número aleatorio
   let losNumeros = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
   let eligeNumero = Math.floor(Math.random() * losNumeros.length);
 
-  // genera los palos aleatorios
-  let palos = [
-    '<img width="30" class="w_img" src="src/assets/img/treboles.png" >',
-    '<img width="30" class="w_img" src="src/assets/img/picas.png" >',
-    '<img width="30" class="w_img" src="src/assets/img/corazon.png" >',
-    '<img width="30" class="w_img" src="src/assets/img/diamante.png" >'
+  let crea_img = comprobar_medida(".w_img");
+  const palos = [
+    crea_img + '  class="w_img" src="src/assets/img/treboles.png" >',
+    crea_img + '  class="w_img" src="src/assets/img/picas.png" >',
+    crea_img + '  class="w_img" src="src/assets/img/corazon.png" >',
+    crea_img + '  class="w_img" src="src/assets/img/diamante.png" >'
   ];
   let eligePalo = Math.floor(Math.random() * palos.length);
 
+  const CLASS_IMGS = document.querySelectorAll(".w_img");
+  CLASS_IMGS.forEach(function(laImagen) {
+    let conserva_ancho = laImagen.getAttribute("width");
+    let conserva_alto = laImagen.getAttribute("height");
+    let conserva_fuente = laImagen.style.fontSize;
+    medidasImagenes(conserva_alto, conserva_ancho, conserva_fuente);
+  });
+
   // si los palos son diamantes o corazones cambia el estilo del texto a rojo
   if (
-    palos[eligePalo] ===
-      '<img width="30" class="w_img" src="src/assets/img/corazon.png" >' ||
-    palos[eligePalo] ===
-      '<img width="30" class="w_img" src="src/assets/img/diamante.png" >'
+    palos[eligePalo].includes("corazon") ||
+    palos[eligePalo].includes("diamante")
   ) {
     NUMERO.style.color = "red";
   } else {
@@ -65,19 +83,17 @@ function crearCarta(event) {
   PALO_ARRIBA.innerHTML = palos[eligePalo];
   PALO_ABAJO.innerHTML = palos[eligePalo];
   NUMERO.innerHTML = losNumeros[eligeNumero];
-  // coger las imagenes con class
-  let CLASS_IMGS = document.querySelectorAll(".w_img");
-  CLASS_IMGS.forEach(function(laImagen) {
-    laImagen.setAttribute("width", "30px");
-    laImagen.setAttribute("height", "30px");
-  });
 }
-// cambio de medidas
+// cambio de medidas de la CARTA
 
 function cambiaMedidas() {
   //verificamos las medidas que nos pasan
-  if (CAMBIA_ALTO.value < 200 || CAMBIA_ANCHO.value < 150) {
-    //creamos un nuevo modal con el js de bootstrap
+  let el_alto = CAMBIA_ALTO.value;
+  let el_ancho = CAMBIA_ANCHO.value;
+
+  if (el_alto < 200 || el_ancho < 150) {
+    // si no coinciden los valores error
+    //creamos un nuevo modal de errores con el js de bootstrap
     let myModal = new bootstrap.Modal(
       document.getElementById("modal_error"),
       true
@@ -85,23 +101,48 @@ function cambiaMedidas() {
     //mostrar el modal
     myModal.show();
   } else {
-    ERRORES.innerHTML = "";
-    MEDIDAS_CARTA.style.height = CAMBIA_ALTO.value + "px";
-    MEDIDAS_CARTA.style.width = CAMBIA_ANCHO.value + "px";
-  }
+    //calcular tamaño nuevo de imagen
+    let medida_img = Math.round((el_ancho / 150) * 30);
+    let medida_fuente = Math.round((el_ancho / 150) * 70);
+    //si no hay error en los valores cambiamos las medidas
+    MEDIDAS_CARTA.style.height = el_alto + "px";
+    MEDIDAS_CARTA.style.width = el_ancho + "px";
 
-  //retocar imagen
-  let CLASS_IMGS = document.querySelectorAll(".w_img");
+    //retocar imagen y fuente
+    medidasImagenes(medida_img, medida_img, medida_fuente);
+  }
+}
+// enviar a consola aConsola(argumento);
+function aConsola(argumento) {
+  console.clear();
+
+  // Cojo el div del HTML que uso para mostrar console.log
+  var logger = document.getElementById("consola");
+
+  // Adding log method from our console object
+  console.log = function(text) {
+    var element = document.createElement("div");
+    var txt = document.createTextNode(text);
+    element.appendChild(txt);
+    logger.appendChild(element);
+  };
+  // llamo a la consola
+  console.log(argumento);
+}
+// cambia medidas de imagenes y fuente de la carta según las nuevas medidas
+function medidasImagenes(alto, ancho, fuente) {
+  if (fuente) {
+    NUMERO.style.fontSize = fuente + "px";
+  }
+  const CLASS_IMGS = document.querySelectorAll(".w_img");
   CLASS_IMGS.forEach(function(laImagen) {
-    laImagen.setAttribute("width", "30px");
-    laImagen.setAttribute("height", "30px");
+    laImagen.setAttribute("width", ancho);
+    laImagen.setAttribute("height", alto);
   });
 }
-
 var id_intervalo = 0; //declaro id_intervalo para poder actuar sobre él
-
-// coger id de errores
-const ERRORES = document.getElementById("errores");
+// coger class de imagenes
+const CLASS_IMGS = document.querySelectorAll(".w_img");
 // coger ids botones
 const BT_CREAR_CARTA = document.getElementById("generaCarta");
 const BT_PARA_INTERVALO = document.getElementById("paraIntervalo");
@@ -122,4 +163,4 @@ BT_CREAR_CARTA.addEventListener("click", crearCarta, false);
 BT_PARA_INTERVALO.addEventListener("click", paraIntervalo, false);
 BT_MEDIDAS.addEventListener("click", cambiaMedidas, false);
 
-window.onload = iniciaIntervalo();
+document.onload = iniciaIntervalo(); // al cargar el documento inicia el intervalo
