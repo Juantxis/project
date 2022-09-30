@@ -1,1 +1,20 @@
-@import "~bootstrap/dist/css/bootstrap.min.css";
+body {
+  background: rgb(53, 82, 53);
+}
+
+.cuerpoCarta {
+  width: 200px;
+}
+
+.numeroCarta {
+  font-size: 50px;
+}
+#paloArriba {
+  margin-left: 5%;
+}
+#numero {
+  margin-left: 40%;
+}
+#paloAbajo {
+  margin-left: 70%;
+}
