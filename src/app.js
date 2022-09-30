@@ -1,8 +1,53 @@
 /* eslint-disable */
 
+import { Carousel } from "bootstrap";
 import "./style.css";
-var el = document.getElementById("generaCarta");
-el.addEventListener("click", crearCarta, false);
+
+// al pulsar el botón se genera la carta
+let CREA_CARTA = document
+  .getElementById("generaCarta")
+  .addEventListener("click", crearCarta, false);
+
+var id_intervalo = 0; //declaro id_intervalo para poder actuar sobre él
+//timer de 10 segundos
+
+var CUENTA_ATRAS = document.getElementById("cuentaAtras");
+let cuenta = function() {
+  //crear intervalo
+  BT_PAUSA.innerHTML = '<i class="fa-solid fa-stop"></i>';
+  let counter = 10;
+
+  id_intervalo = setInterval(function() {
+    if (counter == 0) {
+      clearInterval(id_intervalo);
+      CUENTA_ATRAS.innerHTML = ": 10";
+      crearCarta();
+      cuenta();
+    } else {
+      counter = counter - 1;
+      CUENTA_ATRAS.innerHTML = ": 0" + counter;
+    }
+  }, 1000);
+};
+
+//parar intervalo
+
+var BT_PAUSA = document.getElementById("pausaIntervalo");
+
+let paraIntervalo = function() {
+  if (id_intervalo) {
+    CUENTA_ATRAS.innerHTML = ": 10";
+    BT_PAUSA.innerHTML = '<i class="fa-solid fa-play"></i>';
+    clearInterval(id_intervalo);
+    id_intervalo = false;
+  } else {
+    cuenta();
+  }
+};
+
+document
+  .getElementById("pausaIntervalo")
+  .addEventListener("click", paraIntervalo, false);
 
 function crearCarta(event) {
   console.clear();
@@ -34,3 +79,5 @@ function crearCarta(event) {
     NUMERO.style.color = "black";
   }
 }
+
+window.onload = cuenta();
