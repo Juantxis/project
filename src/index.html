@@ -17,22 +17,40 @@
     />
   </head>
   <body>
-    <button id="generaCarta" type="button" class="btn btn-primary">
-      Generar carta
-    </button>
-    <div
-      id="cuerpoCarta"
-      class="container border border-warning border-2 bg-white rounded rounded-3 cuerpoCarta"
-    >
-      <div class="numeroCarta">
-        <div id="paloArriba"></div>
-        <div id="numero">
-          <img
-            src="/workspace/vanillajs-hello/src/assets/img/corazon.png"
-            width="20"
-          />
+    <div id="fondo" class="row d-flex align-items-center">
+      <div class="col d-flex flex-column justify-content-center ">
+        <div class="container d-flex justify-content-center pt-5">
+          <button id="generaCarta" type="button" class="btn btn-primary mb-5">
+            Generar carta
+          </button>
         </div>
-        <div id="paloAbajo"></div>
+
+        <div class="container d-flex justify-content-center">
+          <div
+            id="cuerpoCarta"
+            class="border border-warning border-1 bg-white rounded-3"
+          >
+            <div class="numeroCarta">
+              <div id="paloArriba" class="d-flex flex-row p-2">
+                <img src="src/assets/img/treboles.png" width="30" />
+              </div>
+              <div id="numero" class="d-flex justify-content-center">7</div>
+
+              <div id="paloAbajo" class="d-flex flex-row-reverse p-2">
+                <img src="src/assets/img/treboles.png" width="30" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container d-flex justify-content-center mt-5">
+          <a
+            id="link"
+            class="link-info text-decoration-none"
+            href="https://www.flaticon.es/iconos-gratis/diamante"
+            title="Iconos"
+            >Iconos creados por Freepik - Flaticon</a
+          >
+        </div>
       </div>
     </div>
     <script
@@ -40,12 +58,5 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <div class="container">
-      <a
-        href="https://www.flaticon.es/iconos-gratis/diamante"
-        title="diamante iconos"
-        >Diamante iconos creados por Freepik - Flaticon</a
-      >
-    </div>
   </body>
 </html>

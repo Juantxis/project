@@ -15,19 +15,22 @@ function crearCarta(event) {
   NUMERO.innerHTML = losNumeros[eligeNumero];
 
   let palos = [
-    '<img src="assets/img/treboles.png">',
-    '<img src="assets/img/picas.png">',
-    '<img src="assets/img/corazon.png">',
-    '<img src="assets/img/diamante.png">'
+    '<img src="src/assets/img/treboles.png" width="30">',
+    '<img src="src/assets/img/picas.png" width="30">',
+    '<img src="src/assets/img/corazon.png" width="30">',
+    '<img src="src/assets/img/diamante.png" width="30">'
   ];
   let eligePalo = Math.floor(Math.random() * palos.length);
 
   PALO_ARRIBA.innerHTML = palos[eligePalo];
   PALO_ABAJO.innerHTML = palos[eligePalo];
   // si los palos son diamantes o corazones cambia el color a rojo
-  if (palos[eligePalo] === "♥" || palos[eligePalo] === "♦") {
-    PALO_ARRIBA.style.color = "red";
-    PALO_ABAJO.style.color = "red";
+  if (
+    palos[eligePalo] === '<img src="src/assets/img/corazon.png" width="30">' ||
+    palos[eligePalo] === '<img src="src/assets/img/diamante.png" width="30">'
+  ) {
     NUMERO.style.color = "red";
+  } else {
+    NUMERO.style.color = "black";
   }
 }

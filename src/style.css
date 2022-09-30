@@ -1,20 +1,20 @@
 body {
+  margin: 0;
+  padding: 0;
   background: rgb(53, 82, 53);
+  height: 100%;
 }
 
-.cuerpoCarta {
-  width: 200px;
+#cuerpoCarta {
+  padding: 0;
+  width: 150px;
 }
-
-.numeroCarta {
-  font-size: 50px;
-}
-#paloArriba {
-  margin-left: 5%;
+#fondo {
+  height: 100%;
 }
 #numero {
-  margin-left: 40%;
+  font-size: 50px;
 }
-#paloAbajo {
-  margin-left: 70%;
+#link {
+  font-size: 10px;
 }
