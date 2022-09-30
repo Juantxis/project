@@ -73,9 +73,24 @@ function crearCarta(event) {
   });
 }
 // cambio de medidas
+
 function cambiaMedidas() {
-  MEDIDAS_CARTA.style.height = CAMBIA_ALTO.value + "px";
-  MEDIDAS_CARTA.style.width = CAMBIA_ANCHO.value + "px";
+  //verificamos las medidas que nos pasan
+  if (CAMBIA_ALTO.value < 200 || CAMBIA_ANCHO.value < 150) {
+    //creamos un nuevo modal con el js de bootstrap
+    let myModal = new bootstrap.Modal(
+      document.getElementById("modal_error"),
+      true
+    );
+    //mostrar el modal
+    myModal.show();
+  } else {
+    ERRORES.innerHTML = "";
+    MEDIDAS_CARTA.style.height = CAMBIA_ALTO.value + "px";
+    MEDIDAS_CARTA.style.width = CAMBIA_ANCHO.value + "px";
+  }
+
+  //retocar imagen
   let CLASS_IMGS = document.querySelectorAll(".w_img");
   CLASS_IMGS.forEach(function(laImagen) {
     laImagen.setAttribute("width", "30px");
@@ -85,6 +100,8 @@ function cambiaMedidas() {
 
 var id_intervalo = 0; //declaro id_intervalo para poder actuar sobre él
 
+// coger id de errores
+const ERRORES = document.getElementById("errores");
 // coger ids botones
 const BT_CREAR_CARTA = document.getElementById("generaCarta");
 const BT_PARA_INTERVALO = document.getElementById("paraIntervalo");

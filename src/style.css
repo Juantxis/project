@@ -29,3 +29,11 @@ body {
 .w_img {
   width: 30px;
 }
+.p_error {
+  margin: 0;
+  font-size: 14px;
+  color: red;
+}
+.botones {
+  font-size: 11px;
+}

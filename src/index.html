@@ -70,6 +70,7 @@
             </div>
           </div>
         </div>
+        <div class="container pt-2"></div>
         <!-- Cuenta atŕas-->
         <div
           class="container d-flex justify-content-center  align-items-center"
@@ -126,6 +127,38 @@
         </div>
       </div>
     </div>
+
+    <!--modal-->
+    <div id="modal_error" class="modal fs-6" tabindex="-1">
+      <div class="modal-dialog ">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Error</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div id="errores" class="modal-body ">
+            <p class="p_error">El valor de alto o el ancho no es válido.</p>
+            <p class="p_error">Alto no puede ser menor de 200</p>
+            <p class="p_error">Ancho no puede ser menor de 150</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary botones"
+              data-bs-dismiss="modal"
+            >
+              Aceptar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
