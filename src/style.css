@@ -8,6 +8,7 @@ body {
 #cuerpoCarta {
   padding: 0;
   width: 150px;
+  height: 200px;
 }
 #fondo {
   height: 100%;
@@ -17,4 +18,14 @@ body {
 }
 #link {
   font-size: 10px;
+}
+.botones {
+  font-size: 12px;
+}
+.margenCarta{
+  padding: 0;
+  margin: 0;
+}
+.w_img{
+  width: 30px;
 }

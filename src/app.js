@@ -42,17 +42,17 @@ function crearCarta(event) {
 
   // genera los palos aleatorios
   let palos = [
-    '<img src="src/assets/img/treboles.png" width="30">',
-    '<img src="src/assets/img/picas.png" width="30">',
-    '<img src="src/assets/img/corazon.png" width="30">',
-    '<img src="src/assets/img/diamante.png" width="30">'
+    '<img width="30" class="w_img" src="src/assets/img/treboles.png" >',
+    '<img width="30" class="w_img" src="src/assets/img/picas.png" >',
+    '<img width="30" class="w_img" src="src/assets/img/corazon.png" >',
+    '<img width="30" class="w_img" src="src/assets/img/diamante.png" >'
   ];
   let eligePalo = Math.floor(Math.random() * palos.length);
 
   // si los palos son diamantes o corazones cambia el estilo del texto a rojo
   if (
-    palos[eligePalo] === '<img src="src/assets/img/corazon.png" width="30">' ||
-    palos[eligePalo] === '<img src="src/assets/img/diamante.png" width="30">'
+    palos[eligePalo] === '<img width="30" class="w_img" src="src/assets/img/corazon.png" >' ||
+    palos[eligePalo] === '<img width="30" class="w_img" src="src/assets/img/diamante.png" >'
   ) {
     NUMERO.style.color = "red";
   } else {
@@ -63,19 +63,46 @@ function crearCarta(event) {
   PALO_ARRIBA.innerHTML = palos[eligePalo];
   PALO_ABAJO.innerHTML = palos[eligePalo];
   NUMERO.innerHTML = losNumeros[eligeNumero];
+  // coger las imagenes con class
+  let CLASS_IMGS = document.querySelectorAll(".w_img");
+  CLASS_IMGS.forEach(function(laImagen){
+    laImagen.setAttribute('width', '30px');
+    laImagen.setAttribute('height', '30px');
+  });
+ 
 }
+// cambio de medidas
+function cambiaMedidas(){
+  console.clear();
+  MEDIDAS_CARTA.style.height= CAMBIA_ALTO.value +"px"
+  MEDIDAS_CARTA.style.width= CAMBIA_ANCHO.value +"px"
+  let CLASS_IMGS = document.querySelectorAll(".w_img");
+  CLASS_IMGS.forEach(function(laImagen){
+    laImagen.setAttribute('width', '30px');
+    laImagen.setAttribute('height', '30px');
+  });
+}
+
 var id_intervalo = 0; //declaro id_intervalo para poder actuar sobre él
 
-// coger ids
-let CREA_CARTA = document.getElementById("generaCarta");
-let CUENTA_ATRAS = document.getElementById("cuentaAtras");
-let BT_PARA_INTERVALO = document.getElementById("paraIntervalo");
+// coger ids botones
+const BT_CREAR_CARTA = document.getElementById("generaCarta");
+const BT_PARA_INTERVALO = document.getElementById("paraIntervalo");
+const BT_MEDIDAS = document.getElementById("cambiaMedida");
+// coger ids inputs medidas
+const MEDIDAS_CARTA = document.getElementById("cuerpoCarta");
+const CAMBIA_ALTO = document.getElementById("alto_carta");
+const CAMBIA_ANCHO = document.getElementById("ancho_carta");
 
-let NUMERO = document.getElementById("numero");
-let PALO_ARRIBA = document.getElementById("paloArriba");
-let PALO_ABAJO = document.getElementById("paloAbajo");
-//botones
-CREA_CARTA.addEventListener("click", crearCarta, false);
+// coger id elemento setInterval
+const CUENTA_ATRAS = document.getElementById("cuentaAtras");
+// coger ids elementos carta
+const NUMERO = document.getElementById("numero");
+const PALO_ARRIBA = document.getElementById("paloArriba");
+const PALO_ABAJO = document.getElementById("paloAbajo");
+// eventos para botones 
+BT_CREAR_CARTA.addEventListener("click", crearCarta, false);
 BT_PARA_INTERVALO.addEventListener("click", paraIntervalo, false);
+BT_MEDIDAS.addEventListener("click", cambiaMedidas, false);
 
 window.onload = iniciaIntervalo();
