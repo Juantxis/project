@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: rgb(53, 82, 53);
+  background: rgb(36, 110, 79);
   height: 100%;
 }
 
@@ -13,7 +13,7 @@ body {
   height: 100%;
 }
 #numero {
-  font-size: 50px;
+  font-size: 70px;
 }
 #link {
   font-size: 10px;
