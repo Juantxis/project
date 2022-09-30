@@ -4,19 +4,26 @@ import { Carousel } from "bootstrap";
 import "./style.css";
 
 // al pulsar el botón se genera la carta
-let CREA_CARTA = document
-  .getElementById("generaCarta")
-  .addEventListener("click", crearCarta, false);
+var CREA_CARTA = document.getElementById("generaCarta");
+  
 
 var id_intervalo = 0; //declaro id_intervalo para poder actuar sobre él
 //timer de 10 segundos
 
 var CUENTA_ATRAS = document.getElementById("cuentaAtras");
+var BT_PAUSA = document.getElementById("pausaIntervalo");
+
+var NUMERO = document.getElementById("numero");
+var PALO_ARRIBA = document.getElementById("paloArriba");
+var PALO_ABAJO = document.getElementById("paloAbajo");
+
+CREA_CARTA.addEventListener("click", crearCarta, false);
+BT_PAUSA.addEventListener("click", paraIntervalo, false);
+
 let cuenta = function() {
   //crear intervalo
   BT_PAUSA.innerHTML = '<i class="fa-solid fa-stop"></i>';
   let counter = 10;
-
   id_intervalo = setInterval(function() {
     if (counter == 0) {
       clearInterval(id_intervalo);
@@ -31,9 +38,6 @@ let cuenta = function() {
 };
 
 //parar intervalo
-
-var BT_PAUSA = document.getElementById("pausaIntervalo");
-
 let paraIntervalo = function() {
   if (id_intervalo) {
     CUENTA_ATRAS.innerHTML = ": 10";
@@ -45,20 +49,16 @@ let paraIntervalo = function() {
   }
 };
 
-document
-  .getElementById("pausaIntervalo")
-  .addEventListener("click", paraIntervalo, false);
+
 
 function crearCarta(event) {
-  console.clear();
-  const NUMERO = document.getElementById("numero");
-  const PALO_ARRIBA = document.getElementById("paloArriba");
-  const PALO_ABAJO = document.getElementById("paloAbajo");
+  //console.clear();
+  
   //Genera el número aleatorio
   let losNumeros = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
   let eligeNumero = Math.floor(Math.random() * losNumeros.length);
   NUMERO.innerHTML = losNumeros[eligeNumero];
-
+  // genera los palos aleatorios
   let palos = [
     '<img src="src/assets/img/treboles.png" width="30">',
     '<img src="src/assets/img/picas.png" width="30">',
