@@ -2,6 +2,23 @@
 
 import { Carousel } from "bootstrap";
 import "./style.css";
+// enviar a consola aConsola(argumento);
+function aConsola(argumento) {
+  console.clear();
+
+  // Cojo el div del HTML que uso para mostrar console.log
+  var logger = document.getElementById("consola");
+
+  // Adding log method from our console object
+  console.log = function(text) {
+    var element = document.createElement("div");
+    var txt = document.createTextNode(text);
+    element.appendChild(txt);
+    logger.appendChild(element);
+  };
+  // llamo a la consola
+  console.log(argumento);
+}
 
 let iniciaIntervalo = function() {
   //crear intervalo
@@ -14,12 +31,12 @@ let iniciaIntervalo = function() {
       crearCarta();
       iniciaIntervalo();
     } else {
+      // hacer cuenta atras en div
       counter = counter - 1;
       CUENTA_ATRAS.innerHTML = ": 0" + counter;
     }
   }, 1000);
 };
-
 //parar intervalo
 let paraIntervalo = function() {
   if (id_intervalo) {
@@ -32,12 +49,12 @@ let paraIntervalo = function() {
     iniciaIntervalo();
   }
 };
-//funcion comprueba medida
+//funcion comprueba medida de las imagenes
 let comprobar_medida = function(clase) {
   const comprueba_medida = document.querySelector(clase);
   let hay_width = comprueba_medida.getAttribute("width");
   let hay_height = comprueba_medida.getAttribute("height");
-  if (hay_width===30) {
+  if (hay_width === 30) {
     return '<img width="30" height="30"';
   } else {
     return '<img width="' + hay_width + '" height="' + hay_height + '"';
@@ -57,14 +74,6 @@ function crearCarta(event) {
     crea_img + '  class="w_img" src="src/assets/img/diamante.png" >'
   ];
   let eligePalo = Math.floor(Math.random() * palos.length);
-
-  const CLASS_IMGS = document.querySelectorAll(".w_img");
-  CLASS_IMGS.forEach(function(laImagen) {
-    let conserva_ancho = laImagen.getAttribute("width");
-    let conserva_alto = laImagen.getAttribute("height");
-    let conserva_fuente = laImagen.style.fontSize;
-    medidasImagenes(conserva_alto, conserva_ancho, conserva_fuente);
-  });
 
   // si los palos son diamantes o corazones cambia el estilo del texto a rojo
   if (
@@ -98,6 +107,8 @@ function cambiaMedidas() {
     //mostrar el modal
     myModal.show();
   } else {
+    CAMBIA_ALTO.value = "";
+    CAMBIA_ANCHO.value = "";
     //calcular tamaño nuevo de imagen
     let medida_img = Math.round((el_ancho / 150) * 30);
     let medida_fuente = Math.round((el_ancho / 150) * 70);
@@ -109,23 +120,7 @@ function cambiaMedidas() {
     medidasImagenes(medida_img, medida_img, medida_fuente);
   }
 }
-// enviar a consola aConsola(argumento);
-function aConsola(argumento) {
-  console.clear();
 
-  // Cojo el div del HTML que uso para mostrar console.log
-  var logger = document.getElementById("consola");
-
-  // Adding log method from our console object
-  console.log = function(text) {
-    var element = document.createElement("div");
-    var txt = document.createTextNode(text);
-    element.appendChild(txt);
-    logger.appendChild(element);
-  };
-  // llamo a la consola
-  console.log(argumento);
-}
 // cambia medidas de imagenes y fuente de la carta según las nuevas medidas
 function medidasImagenes(alto, ancho, fuente) {
   if (fuente) {
@@ -138,8 +133,7 @@ function medidasImagenes(alto, ancho, fuente) {
   });
 }
 var id_intervalo = 0; //declaro id_intervalo para poder actuar sobre él
-// coger class de imagenes
-const CLASS_IMGS = document.querySelectorAll(".w_img");
+
 // coger ids botones
 const BT_CREAR_CARTA = document.getElementById("generaCarta");
 const BT_PARA_INTERVALO = document.getElementById("paraIntervalo");
@@ -160,4 +154,4 @@ BT_CREAR_CARTA.addEventListener("click", crearCarta, false);
 BT_PARA_INTERVALO.addEventListener("click", paraIntervalo, false);
 BT_MEDIDAS.addEventListener("click", cambiaMedidas, false);
 
-document.onload = iniciaIntervalo(); // al cargar el documento inicia el intervalo
+document.onload = iniciaIntervalo();
