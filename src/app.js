@@ -33,19 +33,17 @@ let paraIntervalo = function() {
   }
 };
 //funcion comprueba medida
-function comprobar_medida(clase) {
-  const comprueba_medida = document.querySelectorAll(clase);
-  comprueba_medida.forEach(function(el_width) {
-    var hay_width = el_width.getAttribute("width");
-    var hay_height = el_width.getAttribute("height");
-    aConsola(hay_width);
-  });
-  if (hay_width) {
+let comprobar_medida = function(clase) {
+  const comprueba_medida = document.querySelector(clase);
+  let hay_width = comprueba_medida.getAttribute("width");
+  let hay_height = comprueba_medida.getAttribute("height");
+  let esto = comprueba_medida.toString();
+  if (esto.includes("30")) {
     return '<img width="30" height="30"';
   } else {
     return '<img width="' + hay_width + '" height="' + hay_height + '"';
   }
-}
+};
 // funcion para crear la carta
 function crearCarta(event) {
   //Genera el número aleatorio
