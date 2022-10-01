@@ -37,8 +37,7 @@ let comprobar_medida = function(clase) {
   const comprueba_medida = document.querySelector(clase);
   let hay_width = comprueba_medida.getAttribute("width");
   let hay_height = comprueba_medida.getAttribute("height");
-  let esto = comprueba_medida.toString();
-  if (esto.includes("30")) {
+  if (hay_width===30) {
     return '<img width="30" height="30"';
   } else {
     return '<img width="' + hay_width + '" height="' + hay_height + '"';
