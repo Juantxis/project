@@ -98,7 +98,19 @@ FUNCIONES.CAMBIA_MEDIDAS = function cambiaMedidas() {
     FUNCIONES["MEDIDAS_IMGS"](medida_img, medida_img, medida_fuente);
   }
 };
-
+//parar intervalo
+FUNCIONES.PARA_INTERVALO = function paraIntervalo() {
+  if (VARIABLES["id_intervalo"]) {
+    // si ya existe el intervalo
+    CONTENEDOR_OBJETOS["CUENTA_ATRAS"].innerHTML = ": 10";
+    CONTENEDOR_OBJETOS["BT_PARA_INTERVALO"].innerHTML =
+      '<i class="fa-solid fa-play"></i>';
+    clearInterval(VARIABLES["id_intervalo"]);
+    VARIABLES.id_intervalo = 0;
+  } else {
+    FUNCIONES["INICIA_INTERVALO"]();
+  }
+};
 FUNCIONES.INICIA_INTERVALO = function iniciaIntervalo() {
   //crear intervalo
 
@@ -110,7 +122,8 @@ FUNCIONES.INICIA_INTERVALO = function iniciaIntervalo() {
       clearInterval(VARIABLES["id_intervalo"]);
       CONTENEDOR_OBJETOS["CUENTA_ATRAS"].innerHTML = ": 10";
       FUNCIONES["CREAR_CARTA"]();
-      FUNCIONES["INICIA_INTERVALO"];
+      FUNCIONES["INICIA_INTERVALO"]();
+      console.log(VARIABLES);
     } else {
       // hacer cuenta atras en div
       counter = counter - 1;
@@ -118,19 +131,7 @@ FUNCIONES.INICIA_INTERVALO = function iniciaIntervalo() {
     }
   }, 1000);
 };
-//parar intervalo
-FUNCIONES.PARA_INTERVALO = function paraIntervalo() {
-  if (VARIABLES["id_intervalo"]) {
-    // si ya existe el intervalo
-    CONTENEDOR_OBJETOS["CUENTA_ATRAS"].innerHTML = ": 10";
-    CONTENEDOR_OBJETOS["BT_PARA_INTERVALO"].innerHTML =
-      '<i class="fa-solid fa-play"></i>';
-    clearInterval(VARIABLES["id_intervalo"]);
-    VARIABLES.id_intervalo = false;
-  } else {
-    FUNCIONES["INICIA_INTERVALO"]();
-  }
-};
+
 //funcion comprueba medida de las imagenes
 FUNCIONES.COMPROBAR_MEDIDA = function comprobar_medida(clase) {
   const comprueba_medida = document.querySelector(clase);
@@ -161,10 +162,11 @@ ESCUCHADORES.BT_CREAR_CARTA = CONTENEDOR_OBJETOS[
 ].addEventListener("click", FUNCIONES["CREAR_CARTA"], false);
 ESCUCHADORES.BT_PARA_INTERVALO = CONTENEDOR_OBJETOS[
   "BT_PARA_INTERVALO"
-].addEventListener("click", FUNCIONES["PARA_INTERVALO"](), false);
+].addEventListener("click", FUNCIONES["PARA_INTERVALO"], false);
 ESCUCHADORES.BT_MEDIDAS = CONTENEDOR_OBJETOS["BT_MEDIDAS"].addEventListener(
   "click",
   FUNCIONES["CAMBIA_MEDIDAS"],
   false
 );
+console.log(VARIABLES);
 document.onload = FUNCIONES["INICIA_INTERVALO"]();
