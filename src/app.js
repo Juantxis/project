@@ -5,33 +5,41 @@ import "./style.css";
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-const numeros = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
-const simbolos = ["&hearts;", "&spades;", "&clubs;", "&diams;"];
+window.onload = function() {
+  let numeroPintas = Math.floor(Math.random() * 4);
 
-document.getElementById("arriba").innerHTML = "&hearts;";
-document.getElementById("abajo").innerHTML = "&hearts;";
-document.getElementById("numero").innerHTML = "7";
+  let pintas = ["♥", "♠", "♣", "♦"];
+  let pintaEstilos = [
+    "card text-center text-danger",
+    "card text-center",
+    "card text-center",
+    "card text-center text-danger"
+  ];
+  let numeros = [
+    "A",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "J",
+    "Q",
+    "K"
+  ];
+  let numeroAleatorio = numeros[Math.floor(Math.random() * 13)];
+  let pintaAleatoria = pintas[numeroPintas];
+  let pintaEstilo = pintaEstilos[numeroPintas];
 
-function numeroaleatorio() {
-  let aleatorio = Math.floor(Math.random() * 12);
-  return numeros[aleatorio];
-}
+  document.getElementById("arriba").innerHTML = pintaAleatoria;
+  document.getElementById("abajo").innerHTML = pintaAleatoria;
+  document.getElementById("numero").innerHTML = numeroAleatorio;
 
-function simboloaleatorio() {
-  let aleatorio = Math.floor(Math.random() * 3);
-  return simbolos[aleatorio];
-}
-
-function intercambio() {
-  let simbolo = simboloaleatorio();
-
-  document.getElementById("abajo").innerHTML = simbolo;
-  document.getElementById("arriba").innerHTML = simbolo;
-  let numero = numeroaleatorio();
-  document.getElementById("numero").innerHTML = numero;
-}
-
-setInterval(intercambio(), 10000);
-
-console.log(numeroaleatorio());
-console.log(simboloaleatorio());
+  document
+    .getElementById("carta")
+    .setAttribute("class", "card text-center " + pintaEstilo);
+  console.log(pintaAleatoria);
+};
