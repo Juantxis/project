@@ -1,1 +1,9 @@
-@import "~bootstrap/dist/css/bootstrap.min.css";
+body {
+    background: linear-gradient(circle, #ddd, #bbb, #999)
+}
+
+#excuse {
+    margin: 5rem auto;
+    text-align: center;
+    color: #f30707;
+}
