@@ -20,7 +20,11 @@ window.onload = function() {
     const cardValuesIndex = getRandomNumber(0, cardValues.length -1);
     let randomCardSuits = cardSuits[cardSuitsIndex];
     let randomCardValue = cardValues[cardValuesIndex];
+  
 
+      // Print the randomly generated suit and card value
+        console.log("Random Suit: " + randomCardSuits);
+        console.log("Random Card Value: " + randomCardValue);
 
 
 };
