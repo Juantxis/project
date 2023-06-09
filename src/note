@@ -1,0 +1,9 @@
+// - Create an array of possible suits: ['hearts', 'spades', 'clubs', 'diamonds'].
+// - Create an array of possible card values: ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'King', 'Queen', 'Jack', 'Ace'].
+
+// - Implement a function to generate a random number between a given minimum and maximum (inclusive):
+//     Input: min, max
+//     Output: random number between min and max
+//     Use Math.random() to generate a random number between 0 and 1.
+//     Multiply the random number by the difference between max and min.
+//     Add min to the result to get a random number within the desired range.
