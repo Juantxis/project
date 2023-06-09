@@ -15,7 +15,14 @@ window.onload = function() {
  };
 
 
-  
+      // Generate random suit and card value index
+      const cardSuitsIndex = getRandomNumber(0, cardSuits.length -1);
+      const cardValuesIndex = getRandomNumber(0, cardValues.length -1);
+      let randomCardSuits = cardSuits[cardSuitsIndex];
+      let randomCardValue = cardValues[cardValuesIndex];
+
+
+   
 
 };
 
