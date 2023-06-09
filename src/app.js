@@ -12,9 +12,12 @@ window.onload = function() {
      let range = random * difference;  // scales the random number by the difference
      let finalNumber = Math.floor(range) + min;
      return finalNumber;
+  };
 
 
-  }
+  // Generate random suit and card value
+    const cardSuitsIndex = getRandomNumber(0, cardSuits.length -1);
+
 };
 
 console.log("Hello from the console!");
