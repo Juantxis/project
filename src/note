@@ -7,3 +7,12 @@
 //     Use Math.random() to generate a random number between 0 and 1.
 //     Multiply the random number by the difference between max and min.
 //     Add min to the result to get a random number within the desired range.
+
+// Implement a function to pick a random suit:
+   // Output: random suit from the suits array (step 1).
+   // Generate a random index using the random number function (step 3) with min=0 and max=suits.length-1.
+   // Return the suit at the generated index.
+// Implement a function to pick a random card value:
+  // Output: random card value from the values array (step 2).
+  // Generate a random index using the random number function (step 3) with min=0 and max=values.length-1.
+  // Return the card value at the generated index.
