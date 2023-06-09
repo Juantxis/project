@@ -6,27 +6,8 @@ window.onload = function() {
   const cardValues = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'King', 'Queen', 'Jack', 'Ace'];
 
 
-  function getRandomNumber(min, max){
-     let random = Math.random();  // generates a random number between 0 and 1
-     let difference = max - min;   // calculates the difference between max and min
-     let range = random * difference;  // scales the random number by the difference
-     let finalNumber = Math.floor(range) + min;
-     return finalNumber;
-  };
-
-
-  // Generate random suit and card value
-    const cardSuitsIndex = getRandomNumber(0, cardSuits.length -1);
-    const cardValuesIndex = getRandomNumber(0, cardValues.length -1);
-    let randomCardSuits = cardSuits[cardSuitsIndex];
-    let randomCardValue = cardValues[cardValuesIndex];
   
-
-      // Print the randomly generated suit and card value
-        console.log("Random Suit: " + randomCardSuits);
-        console.log("Random Card Value: " + randomCardValue);
-
 
 };
 
-console.log("Hello from the console!");
+
