@@ -10,6 +10,10 @@ window.onload = function() {
      let random = Math.random();  // generates a random number between 0 and 1
      let difference = max - min;   // calculates the difference between max and min
      let range = random * difference;  // scales the random number by the difference
+     let finalNumber = Math.floor(range) + min;
+     return finalNumber;
+
+
   }
 };
 
