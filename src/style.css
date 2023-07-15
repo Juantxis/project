@@ -1,1 +1,27 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+.reverse {
+  transform: rotate(180deg);
+}
+body,
+html {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+#app {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  border-radius: 10px;
+  width: 200px;
+  height: 300px;
+  font-size: 4rem;
+}
+button {
+  margin-top: 400px;
+  margin-right: 60px;
+}
