@@ -39,4 +39,6 @@ window.onload = function() {
   ].join(" ");
 
   console.log(result);
+
+  document.getElementById("excuse").textContent = result;
 };
