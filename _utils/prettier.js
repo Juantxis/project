@@ -70,18 +70,8 @@ apply(compiler) {
                 return reject(err);
             }
             
-            try{
-              const prettierSource = prettier.format(source, Object.assign({}, this.prettierOptions, { filepath }));
-              if (prettierSource !== source) {
-                fs.writeFile(filepath, prettierSource, this.encoding, err => {
-                  if (err) {
-                    return reject(err);
-                  }
-                  resolve();
-                });
-              } else {
+            try{ 
                 resolve();
-              }
             }
             catch(err){
                 if(this.failSilently) resolve();
