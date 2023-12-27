@@ -1,9 +1,10 @@
 function generarPaginas() {
   for (let index = 0; index < 10; index++) {
-    let pronoun = ['the', 'our', 'tha'];
-    let adj = ['great', 'big', 'small'];
-    let noun = ['jogger', 'racoon', 'bird'];
-    let DNS = ['.com', '.net', '.cl'];
+    
+    let pronoun = ['the', 'our', 'tha','he'];
+    let adj = ['great', 'big', 'small', 'awesome'];
+    let noun = ['jogger', 'racoon', 'bird', 'dog'];
+    let DNS = ['.com', '.net', '.cl', 'io'];
 
     const indiceAleatorio = Math.floor(Math.random() * pronoun.length);
     const indiceAleatorio1 = Math.floor(Math.random() * adj.length);
