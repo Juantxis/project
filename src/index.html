@@ -5,35 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body>
-    <h1 id="myTexto"></h1>
+  <!--Pase todo el codigo app.js, ya que lo tenia en el html-->
+  <body onload="excusesGenerator">
+    <h1 id="myText"></h1>
 
-    <script>
-      function generarExcusa() {
-        let who = ["The dog", "My grandma", "His turtle", "My bird"];
-        let action = ["ate", "peed", "crushed", "broke"];
-        let what = ["my homework", "the keys", "the car"];
-        let when = ["before the class", "right on time", "when I finished", "during my lunch", "while I was praying"];
-
-        const indiceAleatorio = Math.floor(Math.random() * who.length);
-        const indiceAleatorio1 = Math.floor(Math.random() * action.length);
-        const indiceAleatorio2 = Math.floor(Math.random() * what.length);
-        const indiceAleatorio3 = Math.floor(Math.random() * when.length);
-
-        const elementoAleatorio = who[indiceAleatorio];
-        const elementoAleatorio1 = action[indiceAleatorio1];
-        const elementoAleatorio2 = what[indiceAleatorio2];
-        const elementoAleatorio3 = when[indiceAleatorio3];
-
-        const excusa = elementoAleatorio +" " + elementoAleatorio1 + " " + elementoAleatorio2 + " " + elementoAleatorio3;
-
-        const myDiv = document.getElementById("myTexto");
-        myDiv.innerText = excusa;
-
-        myDiv.style.textAlign = "center";
-      }
-
-      generarExcusa();
+    <script src="app.js">
+      
     </script>
   </body>
 </html>
