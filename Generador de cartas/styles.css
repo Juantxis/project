@@ -1,0 +1,45 @@
+body {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-color: aquamarine;
+}
+
+.card-container {
+  text-align: center;
+}
+
+.carta {
+  width: 400px;
+  height: 500px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.simbolo1 {
+  font-size: 54px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.numero {
+  font-size: 64px;
+  font-weight: bold;
+}
+
+.simbolo2 {
+  font-size: 54px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
